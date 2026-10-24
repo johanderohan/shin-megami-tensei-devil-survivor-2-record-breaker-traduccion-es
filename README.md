@@ -6,11 +6,11 @@ Ficha del proyecto, capturas y más traducciones al castellano en **[Parches en 
 
 Traducción al **español de España** de *Shin Megami Tensei: Devil Survivor 2 Record Breaker* (Nintendo 3DS, Atlus, 2015), que nunca salió en español. Se ha hecho sobre la **edición americana en inglés**; no es una traducción directa del japonés.
 
-Se distribuye como parche **XDELTA** para crear una ROM `.3ds` ya traducida. Necesitas tu propia copia del juego: la descarga no incluye ninguna ROM.
+Se distribuye como parche **XDELTA** para crear una ROM `.3ds` ya traducida, más una pequeña carpeta para quien tenga instalada la **actualización 1.1** del juego. Necesitas tu propia copia del juego: la descarga no incluye ninguna ROM.
 
 ## Estado
 
-Versión **1.0**: guion completo, interfaz, tablas de datos y rótulos gráficos.
+Versión **1.0.1**: guion completo, interfaz, tablas de datos y rótulos gráficos, compatible con el juego **con o sin la actualización oficial 1.1**.
 
 | Parte | Alcance |
 |---|---|
@@ -28,6 +28,7 @@ Se conservan los nombres de demonio y de hechizo de la saga (Jack Frost, Agi, Bu
 - Traducción por lotes con biblia y glosario comunes, revisión independiente de cada lote, atribución de hablantes en los combates para el tú/usted y pasadas de unificación.
 - **Prueba jugable en Azahar:** varias rondas desde partida nueva: avisos de inicio, título, nombre del héroe (teclado completo), prólogo, día 1 hasta el combate contra Bai Suzhen, combates con estado, habilidades, comandos, resultados y subida de nivel, configuración, correo, preparación de combate y **guardado real** desde el menú. Sin cuelgues ni glifos vacíos.
 - El XDELTA se ha reaplicado sobre la ROM original con resultado idéntico a la ROM reconstruida, y esa ROM arranca en Azahar sin mods.
+- **Actualización 1.1:** comprobado en Azahar con la actualización oficial instalada (menús, correos de Nicaea, tildes y cabecera en castellano) y sin ella. La carpeta para consola se ha verificado de forma automática sobre los dos ejecutables, pero no se ha probado en una consola real.
 - **Pendiente:** no se han jugado la fusión, el compendio, la subasta, el sistema de Destino ni los días posteriores al primero; falta una partida completa hasta los finales y la prueba en consola física. No se certifican todas las ventanas ni rutas.
 - Siguen en inglés algunos rótulos gráficos menores (p. ej. «No Signal» en la imagen del móvil y logotipos de Nicaea), conservados a propósito o pendientes.
 - Las ayudas largas de la parte inferior de la pantalla se desplazan como en el original: verlas cortadas en un momento dado es normal.
@@ -36,9 +37,13 @@ La traducción y la revisión se han hecho con asistencia de modelos de IA; no s
 
 ## Descarga
 
-En **[Releases](../../releases)**: `desu2rb-es-v1.0.xdelta`.
+En **[Releases](../../releases)**:
 
-- SHA-256 del XDELTA: `319705c887eb353e0b1ddef26b960084ae9aa242ba6c8f38f4b9e17f2eaff07b`
+1. `desu2rb-es-v1.0.1.xdelta`: el parche de la ROM. **Lo necesita todo el mundo.**
+2. `desu2rb-es-v1.0.1-actualizacion.zip`: la carpeta `luma` para consola (y su equivalente para Azahar). Solo hace falta si tienes instalada la actualización 1.1, pero no hace daño ponerla aunque no la tengas.
+
+- SHA-256 del XDELTA: `44e29bb5382a7f2abf8a764b60c55b0539b9555af1e4a24961f22b035df84883`
+- SHA-256 del ZIP: `81367acff3cd6c2647dbfb1ba22d88cbc9bcab7b49ac235c38a27ee5b2660782`
 
 ## Versión necesaria
 
@@ -52,7 +57,7 @@ En **[Releases](../../releases)**: `desu2rb-es-v1.0.xdelta`.
 | MD5 | `872b26825246bc314edbab32c8779bd6` |
 | SHA-256 | `d623197901e0befaa91205e9092a6593240b3ce5e138e9089bea428883028b2c` |
 
-El **XDELTA exige esta ROM exacta**. No es compatible con las ediciones europea ni japonesa y no se ha verificado con actualizaciones u otros mods.
+El **XDELTA exige esta ROM exacta** (la del juego base, aunque luego tengas instalada la actualización 1.1). No es compatible con las ediciones europea ni japonesa ni se ha verificado con otros mods.
 
 ## Cómo aplicar el parche
 
@@ -67,13 +72,26 @@ El **XDELTA exige esta ROM exacta**. No es compatible con las ediciones europea 
 2. Aplica el parche con [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) o con:
 
    ```bash
-   xdelta3 -d -s "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (USA).3ds" desu2rb-es-v1.0.xdelta "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (ES).3ds"
+   xdelta3 -d -s "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (USA).3ds" desu2rb-es-v1.0.1.xdelta "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (ES).3ds"
    ```
 
-3. La ROM resultante ocupa **4.294.967.296 bytes**, MD5 `13e150ab747a0bbcc292b7af241a6464` y SHA-256 `712b4e56ebd8938fb89607da13025d4bd61298bdc777158e854de2bd9127422a`.
+3. La ROM resultante ocupa **4.294.967.296 bytes**, MD5 `a718bcb01598b1be2591099df1213b3b` y SHA-256 `3120324c55be03fe2a2f39c4edd8ac006e3d1700fd4fb0e25ac9691aa7cad23f`. Ya incluye el arreglo de SpotPass de la actualización 1.1.
 4. Ábrela en Azahar (o conviértela al formato que use tu consola). No cargues estados rápidos creados con otra versión del parche; las partidas guardadas del juego sí sirven.
 
+### Si tienes instalada la actualización 1.1
+
+Cuando la actualización oficial 1.1 está instalada, la consola usa su ejecutable en lugar del de la ROM y verías los **menús y correos en inglés** y **huecos detrás de las letras con tilde**. No hace falta desinstalarla:
+
+- **Consola con Luma3DS:** extrae el ZIP y copia la carpeta `luma` a la raíz de la tarjeta SD (debe quedar `luma/titles/0004000000159500/`). Después, enciende la consola manteniendo **SELECT**, activa **Enable game patching** y guarda. Puedes copiar esta carpeta aunque no tengas la actualización: no cambia nada.
+- **Azahar con la actualización instalada:** clic derecho sobre el juego → **Open Mods Location** y copia allí los dos ficheros de la carpeta `azahar-con-actualizacion` del ZIP. Sin la actualización no hace falta.
+
 ## Cambios
+
+### v1.0.1 — 2026-10-25
+
+- Compatible con la actualización oficial 1.1: con ella instalada, los menús, los correos de Nicaea y las tildes ya salen bien (carpeta `luma` en el ZIP). Gracias a Bulkhead28 por el aviso.
+- La ROM parcheada lleva ahora el ejecutable de la 1.1 traducido, con su arreglo de SpotPass.
+- Mismo texto y gráficos que la 1.0. Si ya aplicaste la 1.0: sin la actualización no necesitas cambiar nada; con la actualización basta con añadir la carpeta del ZIP (no hace falta volver a parchear la ROM).
 
 ### v1.0 — 2026-10-23
 
