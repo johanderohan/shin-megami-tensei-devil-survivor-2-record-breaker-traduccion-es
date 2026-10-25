@@ -10,7 +10,7 @@ Se distribuye como parche **XDELTA** para crear una ROM `.3ds` ya traducida, má
 
 ## Estado
 
-Versión **1.0.3**: guion completo, interfaz, tablas de datos y rótulos gráficos, compatible con el juego **con o sin la actualización oficial 1.1**.
+Versión **1.0.4**: guion completo, interfaz, tablas de datos y rótulos gráficos, compatible con el juego **con o sin la actualización oficial 1.1**, y con el **DLC** de las 6 batallas descargables traducido.
 
 | Parte | Alcance |
 |---|---|
@@ -37,13 +37,14 @@ La traducción y la revisión se han hecho con asistencia de modelos de IA; no s
 
 ## Descarga
 
-En **[Releases](../../releases)** (versión 1.0.3):
+En **[Releases](../../releases)** (versión 1.0.4):
 
 | Fichero | Para qué | SHA-256 |
 |---|---|---|
-| `desu2rb-es-v1.0.3.xdelta` | Parche de la ROM. **Siempre.** | `64d6298af7d17f5e3378b20eb6a0faa59381a36436385d1661cf000a4b9a17f3` |
-| `desu2rb-es-v1.0.3-consola.zip` | Carpeta `luma` (opción C) y carpeta de Azahar (opción A) | `c09cf9eb186175fb08de55f9eb1554921a883acd7aae08e8d543bbac2f418f73` |
-| `desu2rb-es-v1.0.3-actualizacion-1.1.xdelta` | Actualización 1.1 traducida (opción D) | `1160b43ac091baf85fd6a21062c99943e4434634e93fd2c65c351c08d9790a10` |
+| `desu2rb-es-v1.0.4.xdelta` | Parche de la ROM. **Siempre.** | `64d6298af7d17f5e3378b20eb6a0faa59381a36436385d1661cf000a4b9a17f3` |
+| `desu2rb-es-v1.0.4-consola.zip` | Carpeta `luma` (opción C) y carpeta de Azahar (opción A) | `c09cf9eb186175fb08de55f9eb1554921a883acd7aae08e8d543bbac2f418f73` |
+| `desu2rb-es-v1.0.4-actualizacion-1.1.xdelta` | Actualización 1.1 traducida (opción D) | `1160b43ac091baf85fd6a21062c99943e4434634e93fd2c65c351c08d9790a10` |
+| `desu2rb-es-v1.0.4-dlc.xdelta` | DLC traducido (opción E) | `e3963336792e65ed3624a2c08f932fadc77f4f712babd2c7da3d1c742e8e711e` |
 
 ## Versión necesaria
 
@@ -62,8 +63,8 @@ No vale para las ediciones europea ni japonesa.
 ### Paso común: parchear la ROM
 
 1. Comprueba el MD5 de tu ROM (`md5sum`, `md5` o `CertUtil -hashfile … MD5` en Windows).
-2. Aplica `desu2rb-es-v1.0.3.xdelta` con [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) o con
-   `xdelta3 -d -s "ROM original.3ds" desu2rb-es-v1.0.3.xdelta "ROM traducida.3ds"`.
+2. Aplica `desu2rb-es-v1.0.4.xdelta` con [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) o con
+   `xdelta3 -d -s "ROM original.3ds" desu2rb-es-v1.0.4.xdelta "ROM traducida.3ds"`.
 3. La ROM traducida debe tener MD5 `13e150ab747a0bbcc292b7af241a6464` (la misma que la v1.0).
 
 Después, elige **una** opción:
@@ -82,12 +83,12 @@ Después, elige **una** opción:
 
 Síntoma: menús y correos en inglés y huecos tras las letras con tilde. No hace falta desinstalar la actualización.
 
-1. Extrae `desu2rb-es-v1.0.3-consola.zip`.
+1. Extrae `desu2rb-es-v1.0.4-consola.zip`.
 2. Copia la carpeta `luma` de dentro de `consola` a la raíz de la SD. Debe quedar `luma/titles/0004000000159500/code.ips` y `exheader.bin` (sustituye los de versiones anteriores).
 3. Enciende con **SELECT** pulsado, activa **Enable game patching** y guarda.
 4. Arranca el juego: todo en castellano. En el título no saldrá «Ver. 1.1»; es normal (Luma usa el ejecutable de la ROM, que es el traducido).
 
-Si parcheaste la ROM con la v1.0.1 o la v1.0.2, vuelve a parchearla con la v1.0.3 antes de usar esta carpeta; si no, el juego se cuelga al arrancar. La v1.0 vale tal cual.
+Si parcheaste la ROM con la v1.0.1 o la v1.0.2, vuelve a parchearla con la v1.0.4 antes de usar esta carpeta; si no, el juego se cuelga al arrancar. La v1.0 vale tal cual.
 
 ### D. Consola con la actualización 1.1 traducida (avanzado)
 
@@ -95,13 +96,29 @@ Para mantener la 1.1 (lleva un arreglo de SpotPass) sin la carpeta de Luma.
 
 1. Con GodMode9, vuelca la actualización instalada como CIA y desencríptala (*CIA image options → Decrypt file*).
 2. Comprueba que ocupa **2.752.768 bytes** y su SHA-256 es `457a23cd1e4cd81efac563ba638b4b83ca75a97b67347850bb023b4f2de580ae`. Si no coincide, el parche no se aplicará.
-3. Aplica `desu2rb-es-v1.0.3-actualizacion-1.1.xdelta` a esa CIA (Delta Patcher o xdelta3). El resultado tiene SHA-256 `4a2dddbf438c5451d0be48430894b16eae86f6a703f21fca6799a1d4602ec07e`.
+3. Aplica `desu2rb-es-v1.0.4-actualizacion-1.1.xdelta` a esa CIA (Delta Patcher o xdelta3). El resultado tiene SHA-256 `4a2dddbf438c5451d0be48430894b16eae86f6a703f21fca6799a1d4602ec07e`.
 4. Instálala con FBI encima de la oficial.
 5. No uses a la vez la carpeta de la opción C: con un `code.ips` presente, Luma ignora la actualización.
 
 Esta opción no se ha probado aún en una consola real.
 
+### E. DLC: las 6 batallas descargables
+
+Traduce los combates, los correos de Nicaea y el menú de las 6 batallas («Macca a la fuga», «Que crezcan los demonios», «Adicionetario», «¡Habilidades en liquidación!», «La pelea de principiantes» y «Rescate del demonio perdido»).
+
+1. Consigue la CIA del DLC completo (los 6 contenidos) y desencríptala con GodMode9 (*CIA image options → Decrypt file*).
+2. Comprueba que ocupa **240.192 bytes** y su SHA-256 es `438ac694100b9c13243815496a4eb1399a66deeb909d3f02144c707e0c2fa858`. Si no coincide, el parche no se aplicará.
+3. Aplica `desu2rb-es-v1.0.4-dlc.xdelta` (Delta Patcher o xdelta3). El resultado tiene SHA-256 `71e56a251b254ee51aa96601deb78444fecf52edb6d32ed745322b493d96f573`.
+4. Instálala con FBI (o en Azahar: *File → Install CIA*).
+
+El DLC traducido no se ha probado aún en una consola ni en emulador: está comprobado por hashes y relectura de los ficheros. Falta ver en pantalla si el menú de DLC muestra bien las tildes.
+
 ## Cambios
+
+### v1.0.4 — 2026-10-25
+
+- DLC traducido: las 6 batallas descargables (combates, correos de Nicaea y menú), con un parche aparte.
+- Mismo parche de ROM, carpeta de consola y actualización que la v1.0.3.
 
 ### v1.0.3 — 2026-10-25
 
