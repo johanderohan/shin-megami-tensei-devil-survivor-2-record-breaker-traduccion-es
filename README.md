@@ -37,14 +37,18 @@ La traducción y la revisión se han hecho con asistencia de modelos de IA; no s
 
 ## Descarga
 
-En **[Releases](../../releases)** (versión 1.0.4):
+En **[Releases](../../releases)** (versión 1.0.5):
 
 | Fichero | Para qué | SHA-256 |
 |---|---|---|
-| `desu2rb-es-v1.0.4.xdelta` | Parche de la ROM. **Siempre.** | `64d6298af7d17f5e3378b20eb6a0faa59381a36436385d1661cf000a4b9a17f3` |
-| `desu2rb-es-v1.0.4-consola.zip` | Carpeta `luma` (opción C) y carpeta de Azahar (opción A) | `c09cf9eb186175fb08de55f9eb1554921a883acd7aae08e8d543bbac2f418f73` |
-| `desu2rb-es-v1.0.4-actualizacion-1.1.xdelta` | Actualización 1.1 traducida (opción D) | `1160b43ac091baf85fd6a21062c99943e4434634e93fd2c65c351c08d9790a10` |
-| `desu2rb-es-v1.0.4-dlc.xdelta` | DLC traducido (opción E) | `e3963336792e65ed3624a2c08f932fadc77f4f712babd2c7da3d1c742e8e711e` |
+| `desu2rb-es-v1.0.5.xdelta` | Parche de la ROM. **Siempre.** | `64d6298af7d17f5e3378b20eb6a0faa59381a36436385d1661cf000a4b9a17f3` |
+| `desu2rb-es-v1.0.5-consola.zip` | Carpeta `luma` (opción C) y carpeta de Azahar (opción A) | `c09cf9eb186175fb08de55f9eb1554921a883acd7aae08e8d543bbac2f418f73` |
+| `desu2rb-es-v1.0.5-actualizacion-1.1-godmode9.xdelta` | Actualización 1.1 traducida, CIA descifrada con GodMode9 (opción D) | `1160b43ac091baf85fd6a21062c99943e4434634e93fd2c65c351c08d9790a10` |
+| `desu2rb-es-v1.0.5-actualizacion-1.1-batch.xdelta` | Ídem, CIA descifrada con Batch CIA 3DS Decryptor (opción D) | `193a1ce13c793c1593dd5fb8925e21dd0aea1be11cb1d6da3d7c1243f95dd25a` |
+| `desu2rb-es-v1.0.5-dlc-godmode9.xdelta` | DLC traducido, CIA descifrada con GodMode9 (opción E) | `e3963336792e65ed3624a2c08f932fadc77f4f712babd2c7da3d1c742e8e711e` |
+| `desu2rb-es-v1.0.5-dlc-batch.xdelta` | Ídem, CIA descifrada con Batch CIA 3DS Decryptor (opción E) | `10cff1a26890c3c4de688f2f333f4b4bdbd99da22362cde6fb0d59e94d27edd8` |
+
+**Dos formas de descifrar una CIA, dos parches.** GodMode9 (*CIA image options → Decrypt file*) descifra la CIA tal cual: el resultado tiene siempre el mismo MD5. [Batch CIA 3DS Decryptor Redux](https://github.com/xxmichibxx/Batch-CIA-3DS-Decryptor-Redux) (Windows; responde **No** a convertir en CCI) la vuelve a montar con un ticket aleatorio: su MD5 cambia cada vez que se usa, así que no hay MD5 que comprobar. Su parche ignora esos datos y sirve para cualquier ejecución. Los dos parches dan la misma CIA traducida; si la CIA de origen no es la correcta, xdelta da un error en lugar de crear una CIA rota.
 
 ## Versión necesaria
 
@@ -63,8 +67,8 @@ No vale para las ediciones europea ni japonesa.
 ### Paso común: parchear la ROM
 
 1. Comprueba el MD5 de tu ROM (`md5sum`, `md5` o `CertUtil -hashfile … MD5` en Windows).
-2. Aplica `desu2rb-es-v1.0.4.xdelta` con [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) o con
-   `xdelta3 -d -s "ROM original.3ds" desu2rb-es-v1.0.4.xdelta "ROM traducida.3ds"`.
+2. Aplica `desu2rb-es-v1.0.5.xdelta` con [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) o con
+   `xdelta3 -d -s "ROM original.3ds" desu2rb-es-v1.0.5.xdelta "ROM traducida.3ds"`.
 3. La ROM traducida debe tener MD5 `13e150ab747a0bbcc292b7af241a6464` (la misma que la v1.0).
 
 Después, elige **una** opción:
@@ -83,20 +87,22 @@ Después, elige **una** opción:
 
 Síntoma: menús y correos en inglés y huecos tras las letras con tilde. No hace falta desinstalar la actualización.
 
-1. Extrae `desu2rb-es-v1.0.4-consola.zip`.
+1. Extrae `desu2rb-es-v1.0.5-consola.zip`.
 2. Copia la carpeta `luma` de dentro de `consola` a la raíz de la SD. Debe quedar `luma/titles/0004000000159500/code.ips` y `exheader.bin` (sustituye los de versiones anteriores).
 3. Enciende con **SELECT** pulsado, activa **Enable game patching** y guarda.
 4. Arranca el juego: todo en castellano. En el título no saldrá «Ver. 1.1»; es normal (Luma usa el ejecutable de la ROM, que es el traducido).
 
-Si parcheaste la ROM con la v1.0.1 o la v1.0.2, vuelve a parchearla con la v1.0.4 antes de usar esta carpeta; si no, el juego se cuelga al arrancar. La v1.0 vale tal cual.
+Si parcheaste la ROM con la v1.0.1 o la v1.0.2, vuelve a parchearla con la v1.0.5 antes de usar esta carpeta; si no, el juego se cuelga al arrancar. La v1.0 vale tal cual.
 
 ### D. Consola con la actualización 1.1 traducida (avanzado)
 
 Para mantener la 1.1 (lleva un arreglo de SpotPass) sin la carpeta de Luma.
 
-1. Con GodMode9, vuelca la actualización instalada como CIA y desencríptala (*CIA image options → Decrypt file*).
-2. Comprueba que ocupa **2.752.768 bytes** y su SHA-256 es `457a23cd1e4cd81efac563ba638b4b83ca75a97b67347850bb023b4f2de580ae`. Si no coincide, el parche no se aplicará.
-3. Aplica `desu2rb-es-v1.0.4-actualizacion-1.1.xdelta` a esa CIA (Delta Patcher o xdelta3). El resultado tiene SHA-256 `4a2dddbf438c5451d0be48430894b16eae86f6a703f21fca6799a1d4602ec07e`.
+1. Consigue la CIA de la actualización 1.1 (`0004000E00159500 … (v1.1.0) (U)`, 2.752.768 bytes; cifrada, MD5 `32835fc9d87b7d27cb36e4ffda98397e`) o vuelca con GodMode9 la que tengas instalada.
+2. Descífrala:
+   - **GodMode9** (*CIA image options → Decrypt file*): debe quedar con SHA-256 `457a23cd1e4cd81efac563ba638b4b83ca75a97b67347850bb023b4f2de580ae`. Usa `desu2rb-es-v1.0.5-actualizacion-1.1-godmode9.xdelta`.
+   - **Batch CIA 3DS Decryptor**: su MD5 varía; usa `desu2rb-es-v1.0.5-actualizacion-1.1-batch.xdelta`.
+3. Aplica el parche (Delta Patcher o xdelta3). El resultado, con cualquiera de los dos, tiene SHA-256 `4a2dddbf438c5451d0be48430894b16eae86f6a703f21fca6799a1d4602ec07e`.
 4. Instálala con FBI encima de la oficial.
 5. No uses a la vez la carpeta de la opción C: con un `code.ips` presente, Luma ignora la actualización.
 
@@ -106,14 +112,21 @@ Esta opción no se ha probado aún en una consola real.
 
 Traduce los combates, los correos de Nicaea y el menú de las 6 batallas («Macca a la fuga», «Que crezcan los demonios», «Adicionetario», «¡Habilidades en liquidación!», «La pelea de principiantes» y «Rescate del demonio perdido»).
 
-1. Consigue la CIA del DLC completo (los 6 contenidos) y desencríptala con GodMode9 (*CIA image options → Decrypt file*).
-2. Comprueba que ocupa **240.192 bytes** y su SHA-256 es `438ac694100b9c13243815496a4eb1399a66deeb909d3f02144c707e0c2fa858`. Si no coincide, el parche no se aplicará.
-3. Aplica `desu2rb-es-v1.0.4-dlc.xdelta` (Delta Patcher o xdelta3). El resultado tiene SHA-256 `71e56a251b254ee51aa96601deb78444fecf52edb6d32ed745322b493d96f573`.
+1. Consigue la CIA del DLC completo (`0004008C00159500 … (v0.1.0) (W)`, los 6 contenidos, 240.192 bytes; cifrada, MD5 `3a428e61f06e4aea1748b75aa757f869`).
+2. Descífrala:
+   - **GodMode9** (*CIA image options → Decrypt file*): debe quedar con SHA-256 `438ac694100b9c13243815496a4eb1399a66deeb909d3f02144c707e0c2fa858`. Usa `desu2rb-es-v1.0.5-dlc-godmode9.xdelta`.
+   - **Batch CIA 3DS Decryptor**: su MD5 varía; usa `desu2rb-es-v1.0.5-dlc-batch.xdelta`.
+3. Aplica el parche (Delta Patcher o xdelta3). El resultado, con cualquiera de los dos, tiene SHA-256 `71e56a251b254ee51aa96601deb78444fecf52edb6d32ed745322b493d96f573`.
 4. Instálala con FBI (o en Azahar: *File → Install CIA*).
 
 El DLC traducido no se ha probado aún en una consola ni en emulador: está comprobado por hashes y relectura de los ficheros. Falta ver en pantalla si el menú de DLC muestra bien las tildes.
 
 ## Cambios
+
+### v1.0.5 — 2026-10-25
+
+- Parches para la actualización 1.1 y el DLC también para quien descifre la CIA con Batch CIA 3DS Decryptor (rehace la CIA con un ticket aleatorio y su MD5 cambia en cada uso). Probados con los programas de esa herramienta: varias ejecuciones dan la misma CIA traducida que la opción de GodMode9.
+- Mismo parche de ROM, carpeta de consola y traducción que la v1.0.4.
 
 ### v1.0.4 — 2026-10-25
 
