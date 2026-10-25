@@ -10,7 +10,7 @@ Se distribuye como parche **XDELTA** para crear una ROM `.3ds` ya traducida, má
 
 ## Estado
 
-Versión **1.0.2**: guion completo, interfaz, tablas de datos y rótulos gráficos, compatible con el juego **con o sin la actualización oficial 1.1**.
+Versión **1.0.3**: guion completo, interfaz, tablas de datos y rótulos gráficos, compatible con el juego **con o sin la actualización oficial 1.1**.
 
 | Parte | Alcance |
 |---|---|
@@ -28,7 +28,7 @@ Se conservan los nombres de demonio y de hechizo de la saga (Jack Frost, Agi, Bu
 - Traducción por lotes con biblia y glosario comunes, revisión independiente de cada lote, atribución de hablantes en los combates para el tú/usted y pasadas de unificación.
 - **Prueba jugable en Azahar:** varias rondas desde partida nueva: avisos de inicio, título, nombre del héroe (teclado completo), prólogo, día 1 hasta el combate contra Bai Suzhen, combates con estado, habilidades, comandos, resultados y subida de nivel, configuración, correo, preparación de combate y **guardado real** desde el menú. Sin cuelgues ni glifos vacíos.
 - El XDELTA se ha reaplicado sobre la ROM original con resultado idéntico a la ROM reconstruida, y esa ROM arranca en Azahar sin mods.
-- **Actualización 1.1:** comprobado en Azahar con la actualización oficial instalada (menús, correos de Nicaea, tildes y cabecera en castellano) y sin ella. La carpeta para consola se ha verificado de forma automática sobre los dos ejecutables, pero no se ha probado en una consola real.
+- **Consola real (New 2DS XL con Luma3DS 13.4):** juego original instalado, con y sin la actualización 1.1, más la carpeta `luma`: arranca, menús, avisos, cabecera y diálogos en castellano. Ahí se descubrió que, con un `code.ips`, Luma usa el ejecutable de la ROM base aunque haya actualización, y por eso la v1.0.3 usa una sola carpeta.
 - **Pendiente:** no se han jugado la fusión, el compendio, la subasta, el sistema de Destino ni los días posteriores al primero; falta una partida completa hasta los finales y la prueba en consola física. No se certifican todas las ventanas ni rutas.
 - Siguen en inglés algunos rótulos gráficos menores (p. ej. «No Signal» en la imagen del móvil y logotipos de Nicaea), conservados a propósito o pendientes.
 - Las ayudas largas de la parte inferior de la pantalla se desplazan como en el original: verlas cortadas en un momento dado es normal.
@@ -39,11 +39,13 @@ La traducción y la revisión se han hecho con asistencia de modelos de IA; no s
 
 En **[Releases](../../releases)**:
 
-1. `desu2rb-es-v1.0.2.xdelta`: el parche de la ROM. **Lo necesita todo el mundo.** (Es el mismo fichero que el de la 1.0.1.)
-2. `desu2rb-es-v1.0.2-consola.zip`: carpetas `luma` para consola, **una para cada versión del ejecutable**, y la de Azahar con la actualización. Solo hacen falta si ves los menús o los correos en inglés (ver más abajo).
+1. `desu2rb-es-v1.0.3.xdelta`: el parche de la ROM. **Lo necesita todo el mundo.** (Da la misma ROM que la v1.0.)
+2. `desu2rb-es-v1.0.3-consola.zip`: la carpeta `luma` para consola, por si ves los menús o correos en inglés, y la de Azahar con la actualización. Ver más abajo.
+3. `desu2rb-es-v1.0.3-actualizacion-1.1.xdelta` (opcional, avanzado): para quien quiera usar la actualización oficial 1.1 traducida sin Luma.
 
-- SHA-256 del XDELTA: `44e29bb5382a7f2abf8a764b60c55b0539b9555af1e4a24961f22b035df84883`
-- SHA-256 del ZIP: `d53c3135dcaca5203c150962aef100e068cf0cffbf6685c40c212ef6cfbd3686`
+- SHA-256 del XDELTA de la ROM: `64d6298af7d17f5e3378b20eb6a0faa59381a36436385d1661cf000a4b9a17f3`
+- SHA-256 del ZIP: `c09cf9eb186175fb08de55f9eb1554921a883acd7aae08e8d543bbac2f418f73`
+- SHA-256 del XDELTA de la actualización: `1160b43ac091baf85fd6a21062c99943e4434634e93fd2c65c351c08d9790a10`
 
 ## Versión necesaria
 
@@ -72,27 +74,41 @@ El **XDELTA exige esta ROM exacta** (la del juego base, aunque luego tengas inst
 2. Aplica el parche con [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) o con:
 
    ```bash
-   xdelta3 -d -s "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (USA).3ds" desu2rb-es-v1.0.2.xdelta "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (ES).3ds"
+   xdelta3 -d -s "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (USA).3ds" desu2rb-es-v1.0.3.xdelta "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (ES).3ds"
    ```
 
-3. La ROM resultante ocupa **4.294.967.296 bytes**, MD5 `a718bcb01598b1be2591099df1213b3b` y SHA-256 `3120324c55be03fe2a2f39c4edd8ac006e3d1700fd4fb0e25ac9691aa7cad23f`. Ya incluye el arreglo de SpotPass de la actualización 1.1.
+3. La ROM resultante ocupa **4.294.967.296 bytes**, MD5 `13e150ab747a0bbcc292b7af241a6464` y SHA-256 `712b4e56ebd8938fb89607da13025d4bd61298bdc777158e854de2bd9127422a` (la misma que la v1.0).
 4. Ábrela en Azahar (o conviértela al formato que use tu consola). No cargues estados rápidos creados con otra versión del parche; las partidas guardadas del juego sí sirven.
 
 ### Si ves los menús o los correos en inglés
 
-Con la ROM parcheada todo debería salir en castellano. Si en la consola ves **menús o correos en inglés** y **huecos detrás de las letras con tilde**, la consola está usando otro ejecutable: el de la **actualización oficial 1.1** si la tienes instalada, o el del juego original (por ejemplo, si juegas con el cartucho o con una copia sin parchear y solo los datos traducidos). No hace falta desinstalar nada; usa el ZIP:
+Con la ROM parcheada todo debería salir en castellano. Si en la consola ves **menús o correos en inglés** y **huecos detrás de las letras con tilde**, es que tienes instalada la **actualización oficial 1.1**: la consola usa su ejecutable, que no está traducido. No hace falta desinstalarla:
 
-1. Mira la **pantalla de título**, debajo del logotipo:
-   - **No pone «Ver. 1.1»** → carpeta `1-consola-SIN-Ver-1.1-en-el-titulo`.
-   - **Pone «Ver. 1.1»** → carpeta `2-consola-CON-Ver-1.1-en-el-titulo`.
-2. Copia la carpeta `luma` que hay **dentro** de la que te toque a la raíz de la SD (debe quedar `luma/titles/0004000000159500/code.ips` y `exheader.bin`). Si ya había ficheros ahí de otra versión, sustitúyelos.
-3. Enciende la consola manteniendo **SELECT**, activa **Enable game patching** y guarda.
+1. Extrae `desu2rb-es-v1.0.3-consola.zip` y copia la carpeta `luma` que hay dentro de `consola` a la raíz de la SD (debe quedar `luma/titles/0004000000159500/code.ips` y `exheader.bin`). Si había ficheros de otra versión del parche, sustitúyelos.
+2. Enciende la consola manteniendo **SELECT**, activa **Enable game patching** y guarda.
 
-**Usa solo la carpeta que te corresponde**: la de la otra versión hace que el juego se cuelgue al arrancar. Si te pasa, borra `luma/titles/0004000000159500/` y copia la correcta. (Luma no puede saber qué versión tienes, por eso hay dos.)
+Con esta carpeta, Luma usa siempre el ejecutable de la ROM (que ya va traducido), tengas o no la actualización; por eso en el título no aparecerá «Ver. 1.1». Es una sola carpeta para todos.
 
-**Azahar con la actualización 1.1 instalada:** clic derecho sobre el juego → **Open Mods Location** y copia allí los dos ficheros de `3-azahar-con-actualizacion-1.1`.
+**Si parcheaste la ROM con la v1.0.1 o la v1.0.2**, vuelve a parchear la ROM original con el xdelta de la v1.0.3 antes de usar la carpeta (la v1.0 vale tal cual): aquellas ROM llevaban otro ejecutable y la carpeta haría que el juego se colgara al arrancar.
+
+**Azahar con la actualización 1.1 instalada:** clic derecho sobre el juego → **Open Mods Location** y copia allí los dos ficheros de `azahar-con-actualizacion-1.1`. Sin la actualización no hace falta nada.
+
+### Opcional: la actualización 1.1 traducida (avanzado)
+
+Si prefieres mantener la actualización oficial 1.1 (incluye un arreglo de SpotPass) **sin usar la carpeta de Luma**, puedes convertir tu actualización en una traducida:
+
+1. Con GodMode9, vuelca la actualización instalada como CIA y desencríptala (*CIA image options → Decrypt file*). Comprueba que el resultado ocupa **2.752.768 bytes** y tiene SHA-256 `457a23cd1e4cd81efac563ba638b4b83ca75a97b67347850bb023b4f2de580ae` (MD5 `dafa7e85af1b5ae93509be36db6a8493`). Si no coincide, el parche no se aplicará.
+2. Aplica `desu2rb-es-v1.0.3-actualizacion-1.1.xdelta` con Delta Patcher o `xdelta3 -d -s actualizacion.cia desu2rb-es-v1.0.3-actualizacion-1.1.xdelta actualizacion-es.cia`. El resultado tiene SHA-256 `4a2dddbf438c5451d0be48430894b16eae86f6a703f21fca6799a1d4602ec07e`.
+3. Instálala con FBI encima de la oficial. **No uses a la vez la carpeta `luma` de `consola`** (con un `code.ips` presente, Luma ignora la actualización). Para el texto del juego basta la ROM parcheada.
+
+Esta vía no se ha probado aún en una consola real.
 
 ## Cambios
+
+### v1.0.3 — 2026-10-25
+
+- Una sola carpeta `luma` para consola, válida con o sin la actualización 1.1: se ha comprobado en una consola real que, si hay un `code.ips`, Luma usa el ejecutable de la ROM base y no el de la actualización, así que la carpeta lleva el parche de la 1.0 y la ROM vuelve a ser la de la v1.0. Ya no hay que mirar el título.
+- Nuevo parche opcional para tener la actualización oficial 1.1 traducida, sin Luma.
 
 ### v1.0.2 — 2026-10-25
 
