@@ -37,71 +37,69 @@ La traducción y la revisión se han hecho con asistencia de modelos de IA; no s
 
 ## Descarga
 
-En **[Releases](../../releases)**:
+En **[Releases](../../releases)** (versión 1.0.3):
 
-1. `desu2rb-es-v1.0.3.xdelta`: el parche de la ROM. **Lo necesita todo el mundo.** (Da la misma ROM que la v1.0.)
-2. `desu2rb-es-v1.0.3-consola.zip`: la carpeta `luma` para consola, por si ves los menús o correos en inglés, y la de Azahar con la actualización. Ver más abajo.
-3. `desu2rb-es-v1.0.3-actualizacion-1.1.xdelta` (opcional, avanzado): para quien quiera usar la actualización oficial 1.1 traducida sin Luma.
-
-- SHA-256 del XDELTA de la ROM: `64d6298af7d17f5e3378b20eb6a0faa59381a36436385d1661cf000a4b9a17f3`
-- SHA-256 del ZIP: `c09cf9eb186175fb08de55f9eb1554921a883acd7aae08e8d543bbac2f418f73`
-- SHA-256 del XDELTA de la actualización: `1160b43ac091baf85fd6a21062c99943e4434634e93fd2c65c351c08d9790a10`
+| Fichero | Para qué | SHA-256 |
+|---|---|---|
+| `desu2rb-es-v1.0.3.xdelta` | Parche de la ROM. **Siempre.** | `64d6298af7d17f5e3378b20eb6a0faa59381a36436385d1661cf000a4b9a17f3` |
+| `desu2rb-es-v1.0.3-consola.zip` | Carpeta `luma` (opción C) y carpeta de Azahar (opción A) | `c09cf9eb186175fb08de55f9eb1554921a883acd7aae08e8d543bbac2f418f73` |
+| `desu2rb-es-v1.0.3-actualizacion-1.1.xdelta` | Actualización 1.1 traducida (opción D) | `1160b43ac091baf85fd6a21062c99943e4434634e93fd2c65c351c08d9790a10` |
 
 ## Versión necesaria
 
 | Dato | Valor |
 |---|---|
-| Edición | América (USA), juego base sin otros parches |
-| Código de producto | `CTR-P-ADXE` |
-| Title ID | `0004000000159500` |
-| ROM usada | `Shin Megami Tensei - Devil Survivor 2 - Record Breaker (USA).3ds` (descifrada) |
+| Edición | América (USA), ROM `.3ds` descifrada del juego base |
+| Código de producto / Title ID | `CTR-P-ADXE` / `0004000000159500` |
 | Tamaño | 4.294.967.296 bytes |
 | MD5 | `872b26825246bc314edbab32c8779bd6` |
 | SHA-256 | `d623197901e0befaa91205e9092a6593240b3ce5e138e9089bea428883028b2c` |
 
-El **XDELTA exige esta ROM exacta** (la del juego base, aunque luego tengas instalada la actualización 1.1). No es compatible con las ediciones europea ni japonesa ni se ha verificado con otros mods.
+No vale para las ediciones europea ni japonesa.
 
-## Cómo aplicar el parche
+## Instalación
 
-1. Comprueba que tu ROM tiene el tamaño y las huellas de arriba:
+### Paso común: parchear la ROM
 
-   ```bash
-   md5sum "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (USA).3ds"      # Linux
-   md5 "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (USA).3ds"         # macOS
-   CertUtil -hashfile "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (USA).3ds" MD5   # Windows
-   ```
+1. Comprueba el MD5 de tu ROM (`md5sum`, `md5` o `CertUtil -hashfile … MD5` en Windows).
+2. Aplica `desu2rb-es-v1.0.3.xdelta` con [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) o con
+   `xdelta3 -d -s "ROM original.3ds" desu2rb-es-v1.0.3.xdelta "ROM traducida.3ds"`.
+3. La ROM traducida debe tener MD5 `13e150ab747a0bbcc292b7af241a6464` (la misma que la v1.0).
 
-2. Aplica el parche con [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) o con:
+Después, elige **una** opción:
 
-   ```bash
-   xdelta3 -d -s "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (USA).3ds" desu2rb-es-v1.0.3.xdelta "Shin Megami Tensei - Devil Survivor 2 - Record Breaker (ES).3ds"
-   ```
+### A. Emulador (Azahar)
 
-3. La ROM resultante ocupa **4.294.967.296 bytes**, MD5 `13e150ab747a0bbcc292b7af241a6464` y SHA-256 `712b4e56ebd8938fb89607da13025d4bd61298bdc777158e854de2bd9127422a` (la misma que la v1.0).
-4. Ábrela en Azahar (o conviértela al formato que use tu consola). No cargues estados rápidos creados con otra versión del parche; las partidas guardadas del juego sí sirven.
+1. Abre la ROM traducida. Listo.
+2. Solo si instalaste en Azahar la actualización 1.1 y ves menús en inglés: clic derecho en el juego → **Open Mods Location** y copia ahí los dos ficheros de `azahar-con-actualizacion-1.1` (del ZIP).
 
-### Si ves los menús o los correos en inglés
+### B. Consola sin la actualización 1.1
 
-Con la ROM parcheada todo debería salir en castellano. Si en la consola ves **menús o correos en inglés** y **huecos detrás de las letras con tilde**, es que tienes instalada la **actualización oficial 1.1**: la consola usa su ejecutable, que no está traducido. No hace falta desinstalarla:
+1. Instala o carga la ROM traducida como siempre (por ejemplo, conviértela en CIA e instálala con FBI).
+2. Listo: todo sale en castellano.
 
-1. Extrae `desu2rb-es-v1.0.3-consola.zip` y copia la carpeta `luma` que hay dentro de `consola` a la raíz de la SD (debe quedar `luma/titles/0004000000159500/code.ips` y `exheader.bin`). Si había ficheros de otra versión del parche, sustitúyelos.
-2. Enciende la consola manteniendo **SELECT**, activa **Enable game patching** y guarda.
+### C. Consola con la actualización 1.1 instalada (recomendado)
 
-Con esta carpeta, Luma usa siempre el ejecutable de la ROM (que ya va traducido), tengas o no la actualización; por eso en el título no aparecerá «Ver. 1.1». Es una sola carpeta para todos.
+Síntoma: menús y correos en inglés y huecos tras las letras con tilde. No hace falta desinstalar la actualización.
 
-**Si parcheaste la ROM con la v1.0.1 o la v1.0.2**, vuelve a parchear la ROM original con el xdelta de la v1.0.3 antes de usar la carpeta (la v1.0 vale tal cual): aquellas ROM llevaban otro ejecutable y la carpeta haría que el juego se colgara al arrancar.
+1. Extrae `desu2rb-es-v1.0.3-consola.zip`.
+2. Copia la carpeta `luma` de dentro de `consola` a la raíz de la SD. Debe quedar `luma/titles/0004000000159500/code.ips` y `exheader.bin` (sustituye los de versiones anteriores).
+3. Enciende con **SELECT** pulsado, activa **Enable game patching** y guarda.
+4. Arranca el juego: todo en castellano. En el título no saldrá «Ver. 1.1»; es normal (Luma usa el ejecutable de la ROM, que es el traducido).
 
-**Azahar con la actualización 1.1 instalada:** clic derecho sobre el juego → **Open Mods Location** y copia allí los dos ficheros de `azahar-con-actualizacion-1.1`. Sin la actualización no hace falta nada.
+Si parcheaste la ROM con la v1.0.1 o la v1.0.2, vuelve a parchearla con la v1.0.3 antes de usar esta carpeta; si no, el juego se cuelga al arrancar. La v1.0 vale tal cual.
 
-### Opcional: la actualización 1.1 traducida (avanzado)
+### D. Consola con la actualización 1.1 traducida (avanzado)
 
-Si prefieres mantener la actualización oficial 1.1 (incluye un arreglo de SpotPass) **sin usar la carpeta de Luma**, puedes convertir tu actualización en una traducida:
+Para mantener la 1.1 (lleva un arreglo de SpotPass) sin la carpeta de Luma.
 
-1. Con GodMode9, vuelca la actualización instalada como CIA y desencríptala (*CIA image options → Decrypt file*). Comprueba que el resultado ocupa **2.752.768 bytes** y tiene SHA-256 `457a23cd1e4cd81efac563ba638b4b83ca75a97b67347850bb023b4f2de580ae` (MD5 `dafa7e85af1b5ae93509be36db6a8493`). Si no coincide, el parche no se aplicará.
-2. Aplica `desu2rb-es-v1.0.3-actualizacion-1.1.xdelta` con Delta Patcher o `xdelta3 -d -s actualizacion.cia desu2rb-es-v1.0.3-actualizacion-1.1.xdelta actualizacion-es.cia`. El resultado tiene SHA-256 `4a2dddbf438c5451d0be48430894b16eae86f6a703f21fca6799a1d4602ec07e`.
-3. Instálala con FBI encima de la oficial. **No uses a la vez la carpeta `luma` de `consola`** (con un `code.ips` presente, Luma ignora la actualización). Para el texto del juego basta la ROM parcheada.
+1. Con GodMode9, vuelca la actualización instalada como CIA y desencríptala (*CIA image options → Decrypt file*).
+2. Comprueba que ocupa **2.752.768 bytes** y su SHA-256 es `457a23cd1e4cd81efac563ba638b4b83ca75a97b67347850bb023b4f2de580ae`. Si no coincide, el parche no se aplicará.
+3. Aplica `desu2rb-es-v1.0.3-actualizacion-1.1.xdelta` a esa CIA (Delta Patcher o xdelta3). El resultado tiene SHA-256 `4a2dddbf438c5451d0be48430894b16eae86f6a703f21fca6799a1d4602ec07e`.
+4. Instálala con FBI encima de la oficial.
+5. No uses a la vez la carpeta de la opción C: con un `code.ips` presente, Luma ignora la actualización.
 
-Esta vía no se ha probado aún en una consola real.
+Esta opción no se ha probado aún en una consola real.
 
 ## Cambios
 
